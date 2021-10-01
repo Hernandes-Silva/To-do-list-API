@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Tasks{% endblock title %}
+{% block content %}
+<div class="col-10 offset-1 shadow border-div mt-4">
+    <div class="my-2 mx-2">
+        <h1 class="text-center">Update task</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="d-grid gap-2 col-6 mx-auto pb-3">
+                <button type="submit" class="btn btn-primary ">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+    {% endblock content %}

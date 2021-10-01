@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{%block title %}Tasks{% endblock title %}
+{%block style %}
+<style>
+    table{
+  border-collapse: separate;
+  border-spacing: 0 20px;
+}
+
+    table tr td{
+  padding:15px !important;
+  background-color:white;
+}
+tr{
+    border-radius: 25px;
+}
+a > i{
+  padding-right:10px;
+}
+
+   
+</style>
+{% endblock style %}
+{% block content %}
+<div class="col-10 offset-1 shadow border-div mt-4">
+    <div class="my-2 mx-2">
+    <h3 class="text-center pt-2">All tasks</h3>
+    <a href="{% url 'task_create' %}" class="btn btn-outline-primary btn-lg mb-2 shadow-sm" role="button">Create task</a>
+    <table class="table"  id="task_table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Status</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for task in tasks %}
+            <tr class="shadow mt-2" style="border:0 transparent;">
+                <td>{{task.name}}</td>
+                <td>{{task.get_status_display}}</td>
+                <td>
+                    <a href="{% url 'task_update' task.slug %}" ><i class="far fa-edit"></i></a>
+                    <a href="{% url 'task_delete' task.slug %}" ><i class="fa fa-trash-alt"></i></a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script type="text/javascript">
+    $.fn.dataTable.ext.classes.sPageButton = 'btn button-paginate m-1';
+    $(document).ready(function () {
+        $("#task_table").DataTable({
+            "responsive": true,
+            "dom": "<'row'<'col-6 mt-1'l><'col-6 d-flex justify-content-end'f>>rt<'row'<'col-6 mt-1'i><'col-6 d-flex justify-content-end'p>>",
+            "autoWidth": false,
+            "language": {
+                "paginate": {
+                    "previous": '<span class="pagination-fa"><i class="fas fa-chevron-left" ></i></span>',
+                    "next": '<span class="pagination-fa"><i class="fas fa-chevron-right" ></i></span>'
+                }
+            },
+            "search": { "caseInsensitive": true, },
+        });
+    });
+</script>
+{% endblock scripts %}
