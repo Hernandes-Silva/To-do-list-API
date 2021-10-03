@@ -9,7 +9,7 @@ class Task(models.Model):
     name = models.CharField(max_length=250)
     slug = models.SlugField(max_length = 250, null = True, blank = True, unique=True)
     status = models.CharField(max_length=3, choices=status_choice)
-    user = models.ForeignKey(User, related_name='tasks', verbose_name='Usuário', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='tasks', verbose_name='user', on_delete=models.CASCADE)
     def __str__(self):
        return self.name
 
