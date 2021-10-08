@@ -69,13 +69,13 @@ class TestViewAPI(TestCase):
         self.password = '123' 
         self.user = User.objects.create_superuser('test', 'test@email.com', self.password)
         self.user2 = User.objects.create_superuser('test2', 'test@email.com', self.password)
-        self.task = create_deafault_task(self.user2)
-        response2 = self.client.post('/api/token/', {'username': self.user2.username, 'password':self.password})
-        token2 = response2.data['access']
+        self.task = create_deafault_task(self.user2)        
         self.api = APIClient()
-        self.api.credentials(HTTP_AUTHORIZATION='Bearer ' + token2)
         response = self.client.post('/api/token/', {'username': self.user.username, 'password':self.password})
         self.token =  response.data['access']
+        response2 = self.client.post('/api/token/', {'username': self.user2.username, 'password':self.password})
+        token2 = response2.data['access']
+        self.api.credentials(HTTP_AUTHORIZATION='Bearer ' + token2)
 
     def test_get_ListTaskAPIView(self):
         response = self.api.get('/api/tasks/', data={'format': 'json'})
@@ -90,5 +90,14 @@ class TestViewAPI(TestCase):
         response = self.api.post('/api/tasks/', {'name':'Teste', 'status':'TOD'})
         self.assertEquals(response.status_code, 201)
         self.assertEquals(len(Task.objects.all()), 2)
+    
+    def test_DELETE_UpdateDeleteTaskAPIVIew(self):
+        url = '/api/tasks/1/detail/'
+        response = self.api.delete(url)
+        self.assertEquals(len(Task.objects.all()), 0)
+        #delete another user's task 
+        task = create_deafault_task(self.user)
+        response2 = self.api.delete('/api/tasks/{}/detail/'.format(task.id))
+        self.assertEquals(len(Task.objects.all()), 1)
 
         
