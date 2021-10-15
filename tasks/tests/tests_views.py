@@ -99,5 +99,14 @@ class TestViewAPI(TestCase):
         task = create_deafault_task(self.user)
         response2 = self.api.delete('/api/tasks/{}/detail/'.format(task.id))
         self.assertEquals(len(Task.objects.all()), 1)
+    def test_Update_UpdateDeleteTaskAPIVIew(self):
+        url = '/api/tasks/1/detail/'
+        response = self.api.put(url, {'name':'update', 'status':'INP'})
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(Task.objects.all()[0].name, 'update')
+        #update another user's task 
+        self.api.credentials(HTTP_AUTHORIZATION='Bearer ' + self.token)
+        response2 = self.api.put(url, {'name':'update2', 'status':'INP'})
+        self.assertEquals(response2.status_code, 404)
 
         
