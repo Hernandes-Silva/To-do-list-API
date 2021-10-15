@@ -39,7 +39,7 @@
  Para executar esse projeto é necessario ter instalado na sua maquina o [Python 3](https://www.python.org/downloads/)
  e o [git](https://git-scm.com/)
 
-### Executando o sistema
+### Executando a aplicação
 
 ```bash
 
