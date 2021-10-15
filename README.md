@@ -5,7 +5,7 @@
 <p align="center">
  <a href="#features">Features</a> •
  <a href="#pré-requisitos">Pré Requisitos</a> •
- <a href="#rodando-o-mobile">Rodando a aplicação</a> •
+ <a href="#Executando a aplicação">Executando a aplicação</a> •
  <a href="#tecnologias">Tecnologias</a> •
  <a href="#autor">Autor</a>
 </p>
@@ -44,8 +44,8 @@
 ```bash
 
 # clone o projeto
-$ git clone https://github.com/Hernandes-Silva/virtual_store
-$ cd virtual_store
+$ git clone https://github.com/Hernandes-Silva/To-do-list-API
+$ cd To-do-list-API
 
 #acesse a pasta do projeto com o terminal/cmd e dê o comando:
 $  pip install -r requirements.txt
