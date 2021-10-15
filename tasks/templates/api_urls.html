@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Create task{% endblock title %}
+{% block content %}
+<div class="col-10 offset-1 shadow border-div mt-4">
+    <div class="my-2 mx-2 text-center">
+        <h1 class="text-center">List Urls api</h1>
+        <p></p>
+        list task, methods post and get:<a href="{% url 'api_task' %}">api/tasks/</a>
+        </p>
+        <p>
+        detail task, methods put and delete:<a href="{% url 'api_task_detail' 1 %}">api/tasks/id_task/detail/</a>
+        </p>
+
+    </div>
+</div>
+{% endblock content %}

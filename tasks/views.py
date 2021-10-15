@@ -9,6 +9,11 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http.response import Http404
 # Create your views here.
+
+def api_urls(request):
+    if request.method == 'GET':
+       return render(request, 'api_urls.html')
+    raise Http404
 class ListTaskView(LoginRequiredMixin,ListView):
     model = Task
     template_name = 'task_list.html'
