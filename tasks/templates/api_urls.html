@@ -4,10 +4,19 @@
 <div class="col-10 offset-1 shadow border-div mt-4">
     <div class="my-2 mx-2 text-center">
         <h1 class="text-center">List Urls api</h1>
-        <p></p>
-        list task, methods post and get:<a href="{% url 'api_task' %}">api/tasks/</a>
+        <p>
+            api request token <a href="{% url 'token_obtain_pair' %}">api/token/</a>
         </p>
         <p>
+            api request refresh token <a href="{% url 'token_refresh' %}">api/token/refresh/</a>
+        </p>
+        <p>
+            api request verify token <a href="{% url 'token_verify' %}">api/token/verify/</a>
+        </p>
+        <p>
+        list task, methods post and get:<a href="{% url 'api_task' %}">api/tasks/</a>
+        </p>
+        <p class="mb-2">
         detail task, methods put and delete:<a href="{% url 'api_task_detail' 1 %}">api/tasks/id_task/detail/</a>
         </p>
 
