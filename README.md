@@ -16,8 +16,9 @@
 
 
 <h1 align="center">
-  <img alt="Todo List APP" title="Todo List APP" src="./github/login.gif" height="425" />
-  <img alt="Todo List APP" title="Todo List APP" src="./github/tasks.gif" height="425" />
+  <img alt="Todo List login" title="Todo List APP" src="./github/login.gif" height="425" />
+  <img alt="Todo List update and delete" title="Todo List update and delete" src="./github/update.gif" height="425" />
+  <img alt="Todo List API" title="Todo List API" src="./github/api.gif" height="425" />
 
 </h1>
 
